@@ -1,3 +1,9 @@
+# 최초 작성
+#   작성일자: 2026-04-27
+#   작성자  : 홍세현
+
+
+
 version: '3.8'
 
 services:
@@ -13,8 +19,6 @@ services:
     volumes:
       - zookeeper-data:/var/lib/zookeeper/data
       - zookeeper-log:/var/lib/zookeeper/log     
-    env_file:
-      - ../.env
  
 
   kafka:
@@ -46,12 +50,10 @@ services:
       KAFKA_NUM_PARTITIONS: 3
     volumes:
       - kafka-data:/var/lib/kafka/data
-    env_file:
-      - ../.env
 
 
   kafka-ui:
-    image: provectuslabs/kafka-ui:latest
+    image: provectuslabs/kafka-ui:v0.7.2
     container_name: kafka-ui
     restart: unless-stopped
     depends_on:
@@ -62,11 +64,54 @@ services:
       KAFKA_CLUSTERS_0_NAME: otto-cluster
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
       KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
-    env_file:
-      - ../.env
+
+  spark-master:
+    build: ./spark
+    image: custom-spark-pg:3.5.4
+    container_name: spark-master
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master
+    environment:
+      - SPARK_MASTER_HOST=spark-master
+      - SPARK_MASTER_PORT=7077
+      - SPARK_MASTER_WEBUI_PORT=8080
+    ports:
+      - "7077:7077"
+      - "18080:8080"
+    volumes:
+      - ./spark/jobs:/opt/spark/jobs
+  
+  spark-worker-1:
+    image: custom-spark-pg:3.5.4
+    container_name: spark-worker-1
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
+    environment:
+      - SPARK_WORKER_MEMORY=512m
+      - SPARK_WORKER_CORES=1
+      - SPARK_WORKER_WEBUI_PORT=8081
+    depends_on:
+      - spark-master
+    ports:
+      - "8081:8081" 
+    volumes:
+      - ./spark/jobs:/opt/spark/jobs
+  
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: otto
+      POSTGRES_PASSWORD: otto1234
+      POSTGRES_DB: otto_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./spark/init:/docker-entrypoint-initdb.d
 
 
 volumes:
   zookeeper-data:
   zookeeper-log:
   kafka-data:
+  postgres-data:
