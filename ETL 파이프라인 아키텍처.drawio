@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="페이지-1" id="sasqhgxfavqntbzFAfsl">
-    <mxGraphModel dx="2854" dy="1103" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2301" dy="913" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -22,7 +22,15 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontColor=#333333;fontSize=11;align=center;" value="&lt;b&gt;OTTO Commerce&lt;/b&gt;&#xa;Transaction Stream&#xa;220M events&#xa;(clicks / carts / orders)" vertex="1">
-          <mxGeometry height="80" width="150" x="-484" y="564" as="geometry" />
+          <mxGeometry height="80" width="150" x="-484" y="431" as="geometry" />
+        </mxCell>
+        <mxCell id="RitXrY3BCVhGGZJzeqHb-2" edge="1" parent="1" source="GYxu1pd3vHxg3ZNl7D7r-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="GYxu1pd3vHxg3ZNl7D7r-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RitXrY3BCVhGGZJzeqHb-3" connectable="0" parent="RitXrY3BCVhGGZJzeqHb-2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="임의 부여" vertex="1">
+          <mxGeometry relative="1" x="-0.0319" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontColor=#333333;fontSize=11;align=center;" value="&lt;b&gt;Faker&lt;/b&gt;&lt;br&gt;유저 프로필 생성&lt;br&gt;(이름 · 성별 · 지역&amp;nbsp;·&amp;nbsp;나이 등)" vertex="1">
           <mxGeometry height="80" width="150" x="-484" y="276" as="geometry" />
@@ -31,18 +39,20 @@
           <mxGeometry height="30" width="160" x="-211" y="224" as="geometry" />
         </mxCell>
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-248" edge="1" parent="1" source="GYxu1pd3vHxg3ZNl7D7r-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;entryPerimeter=0;" target="GYxu1pd3vHxg3ZNl7D7r-247">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="GYxu1pd3vHxg3ZNl7D7r-371" connectable="0" parent="GYxu1pd3vHxg3ZNl7D7r-248" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="otto" vertex="1">
-          <mxGeometry relative="1" x="0.5265" y="2" as="geometry">
-            <mxPoint as="offset" />
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-58.5" y="471" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="GYxu1pd3vHxg3ZNl7D7r-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#333333;fontSize=11;align=center;" value="&lt;b&gt;Kafka&lt;/b&gt;&lt;br&gt;Replay Producer&lt;br&gt;jsonl → 실시간 스트리밍" vertex="1">
-          <mxGeometry height="80" width="155" x="-213.5" y="564" as="geometry" />
+        <mxCell id="GYxu1pd3vHxg3ZNl7D7r-371" connectable="0" parent="GYxu1pd3vHxg3ZNl7D7r-248" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="otto + users" vertex="1">
+          <mxGeometry relative="1" x="0.5265" y="2" as="geometry">
+            <mxPoint x="-14" y="71" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GYxu1pd3vHxg3ZNl7D7r-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#333333;fontSize=11;align=center;" value="&lt;b&gt;Kafka&lt;/b&gt;&lt;br&gt;Replay Producer&lt;br&gt;jsonl → 스트리밍" vertex="1">
+          <mxGeometry height="80" width="155" x="-213.5" y="431" as="geometry" />
         </mxCell>
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-247" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" value="&lt;b&gt;&amp;nbsp;S3 Landing&amp;nbsp;&lt;/b&gt;&lt;div&gt;&lt;b&gt;raw&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(51, 51, 51); font-size: 11px; white-space: normal;&quot;&gt;원본 보존,&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(51, 51, 51); font-size: 11px; white-space: normal;&quot;&gt;재처리&lt;/span&gt;&lt;b&gt;&lt;/b&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="78" width="78" x="92" y="430" as="geometry" />
+          <mxGeometry height="78" width="78" x="96" y="296" as="geometry" />
         </mxCell>
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-249" edge="1" parent="1" source="GYxu1pd3vHxg3ZNl7D7r-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;" target="GYxu1pd3vHxg3ZNl7D7r-247">
           <mxGeometry relative="1" as="geometry" />
@@ -88,25 +98,25 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-273" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/databases/Azure_Database_PostgreSQL_Server.svg;" value="&lt;b&gt;Postgre SQL&lt;/b&gt;&amp;nbsp;&lt;div&gt;&lt;b&gt;Data Mart&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(51, 51, 51); font-size: 11px; white-space: normal; background-color: rgb(236, 236, 236);&quot;&gt;users&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(51, 51, 51); font-size: 11px; white-space: normal; background-color: rgb(236, 236, 236);&quot;&gt;stg_events&lt;/span&gt;&lt;br style=&quot;color: rgb(51, 51, 51); font-size: 11px; white-space: normal; background-color: rgb(236, 236, 236);&quot;&gt;&lt;span style=&quot;color: rgb(51, 51, 51); font-size: 11px; white-space: normal; background-color: rgb(236, 236, 236);&quot;&gt;mart_&lt;/span&gt;&lt;br&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(51, 51, 51); font-size: 11px; white-space: normal; background-color: rgb(236, 236, 236);&quot;&gt;...&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="102" width="76.5" x="611.75" y="477.5" as="geometry" />
+          <mxGeometry height="102" width="76.5" x="613" y="490" as="geometry" />
         </mxCell>
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-359" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8f8;strokeColor=#b85450;fontColor=#b85450;fontSize=12;fontStyle=3;verticalAlign=top;dashed=1;strokeWidth=2;" value="&lt;span style=&quot;font-size: 11px;&quot;&gt;otto_pipeline_dag&amp;nbsp;&lt;/span&gt;" vertex="1">
-          <mxGeometry height="520" width="245" x="269" y="566" as="geometry" />
+          <mxGeometry height="520" width="245" x="269" y="433" as="geometry" />
         </mxCell>
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-360" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#333333;fontSize=11;align=center;" value="&lt;b&gt;Task 1: Spark 정제&lt;/b&gt;&lt;br&gt;타입변환 · Null처리&lt;br&gt;Nested JSON flatten&lt;div&gt;Faker User Join&lt;/div&gt;" vertex="1">
-          <mxGeometry height="70" width="210" x="286" y="601" as="geometry" />
+          <mxGeometry height="70" width="210" x="286" y="468" as="geometry" />
         </mxCell>
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-361" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#333333;fontSize=11;align=center;dashed=1;" value="&lt;b&gt;Task 2: DQ 검증&lt;/b&gt;&#xa;Null · 중복 · 타입 체크&#xa;PASS → 다음 / FAIL → 중단" vertex="1">
-          <mxGeometry height="70" width="210" x="286" y="696" as="geometry" />
+          <mxGeometry height="70" width="210" x="286" y="563" as="geometry" />
         </mxCell>
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-362" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#333333;fontSize=11;align=center;" value="&lt;b&gt;Task 3: Spark 마트 설계&lt;/b&gt;&lt;br&gt;비즈니스 지표 구현" vertex="1">
-          <mxGeometry height="70" width="210" x="286" y="791" as="geometry" />
+          <mxGeometry height="70" width="210" x="286" y="658" as="geometry" />
         </mxCell>
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-363" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#333333;fontSize=11;align=center;" value="&lt;b&gt;Task 4: PostgreSQL 적재&lt;/b&gt;&lt;br&gt;marts 테이블 load" vertex="1">
-          <mxGeometry height="70" width="210" x="286" y="886" as="geometry" />
+          <mxGeometry height="70" width="210" x="286" y="753" as="geometry" />
         </mxCell>
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-364" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#333333;fontSize=11;align=center;dashed=1;" value="&lt;b&gt;Task 5: 완료 알림&lt;/b&gt;&lt;br&gt;성공 · 실패 알림&lt;br&gt;(Slack)" vertex="1">
-          <mxGeometry height="70" width="210" x="286" y="981" as="geometry" />
+          <mxGeometry height="70" width="210" x="286" y="848" as="geometry" />
         </mxCell>
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-365" edge="1" parent="1" source="GYxu1pd3vHxg3ZNl7D7r-360" style="edgeStyle=orthogonalEdgeStyle;rounded=0;fontSize=10;strokeColor=#6c8ebf;" target="GYxu1pd3vHxg3ZNl7D7r-361" value="">
           <mxGeometry relative="1" as="geometry" />
@@ -128,8 +138,8 @@
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-369" edge="1" parent="1" source="GYxu1pd3vHxg3ZNl7D7r-361" style="edgeStyle=orthogonalEdgeStyle;rounded=0;fontSize=10;strokeColor=#FF0000;fontColor=#FF0000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="GYxu1pd3vHxg3ZNl7D7r-364" value="FAIL → 중단">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="536" y="731" />
-              <mxPoint x="536" y="1016" />
+              <mxPoint x="536" y="598" />
+              <mxPoint x="536" y="883" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -138,7 +148,7 @@
         </mxCell>
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-262" edge="1" parent="1" source="GYxu1pd3vHxg3ZNl7D7r-247" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="GYxu1pd3vHxg3ZNl7D7r-360">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="263.7199999999998" y="371.98" as="targetPoint" />
+            <mxPoint x="263.7199999999998" y="238.98000000000002" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-264" connectable="0" parent="GYxu1pd3vHxg3ZNl7D7r-262" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="raw read" vertex="1">
@@ -147,31 +157,22 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-270" edge="1" parent="1" source="GYxu1pd3vHxg3ZNl7D7r-363" style="edgeStyle=orthogonalEdgeStyle;rounded=0;fontSize=10;strokeColor=#82B366;fontColor=#82b366;" value="Mart 적재">
-          <mxGeometry relative="1" x="0.3291" as="geometry">
+          <mxGeometry relative="1" x="0.6095" y="-2" as="geometry">
             <mxPoint as="offset" />
-            <mxPoint x="485" y="530.0344827586207" as="sourcePoint" />
-            <mxPoint x="650" y="673" as="targetPoint" />
+            <mxPoint x="485" y="397.0344827586207" as="sourcePoint" />
+            <mxPoint x="653" y="689" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-492" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#666666;" value="Transform (Airflow DAG)" vertex="1">
           <mxGeometry height="30" width="230" x="276" y="224" as="geometry" />
         </mxCell>
-        <mxCell id="GYxu1pd3vHxg3ZNl7D7r-493" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#FFB570;fontSize=12;fontStyle=3;verticalAlign=top;dashed=1;strokeWidth=2;" value="&lt;span style=&quot;color: rgb(230, 81, 0); font-size: 11px;&quot;&gt;init_user_dag&lt;/span&gt;" vertex="1">
-          <mxGeometry height="241" width="245" x="269" y="256" as="geometry" />
-        </mxCell>
-        <mxCell id="GYxu1pd3vHxg3ZNl7D7r-494" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;b&gt;Task 1: Faker 생성 (Python)&lt;/b&gt;&lt;br&gt;S3 raw/users/ 읽기&lt;br&gt;→ PostgreSQL users 적재" vertex="1">
-          <mxGeometry height="70" width="210" x="286" y="291" as="geometry" />
-        </mxCell>
-        <mxCell id="GYxu1pd3vHxg3ZNl7D7r-498" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#333333;fontSize=11;align=center;dashed=1;" value="&lt;b&gt;Task 2: 완료 알림&lt;/b&gt;&lt;br&gt;성공 · 실패 알림&lt;br&gt;(Slack)" vertex="1">
-          <mxGeometry height="70" width="210" x="286" y="393" as="geometry" />
-        </mxCell>
-        <mxCell id="GYxu1pd3vHxg3ZNl7D7r-504" edge="1" parent="1" source="GYxu1pd3vHxg3ZNl7D7r-494" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=#B85450;">
+        <mxCell id="GYxu1pd3vHxg3ZNl7D7r-508" edge="1" parent="1" source="GYxu1pd3vHxg3ZNl7D7r-247" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0.507;entryY=0.011;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#82B366;exitPerimeter=0;" target="GYxu1pd3vHxg3ZNl7D7r-273">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="391" y="392" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="651" y="317" />
+            </Array>
+            <mxPoint x="496" y="193" as="sourcePoint" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="GYxu1pd3vHxg3ZNl7D7r-508" edge="1" parent="1" source="GYxu1pd3vHxg3ZNl7D7r-494" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.507;entryY=0.011;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#82B366;" target="GYxu1pd3vHxg3ZNl7D7r-273">
-          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="GYxu1pd3vHxg3ZNl7D7r-509" connectable="0" parent="GYxu1pd3vHxg3ZNl7D7r-508" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#82B366;" value="&lt;font style=&quot;&quot;&gt;load&lt;/font&gt;" vertex="1">
           <mxGeometry relative="1" x="0.6115" y="-2" as="geometry">
@@ -182,22 +183,6 @@
           <mxGeometry relative="1" x="0.6081" y="-3" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="GYxu1pd3vHxg3ZNl7D7r-580" edge="1" parent="1" source="GYxu1pd3vHxg3ZNl7D7r-273" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.308;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#82B366;dashed=1;" target="GYxu1pd3vHxg3ZNl7D7r-360">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="245" y="529" />
-              <mxPoint x="245" y="623" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="GYxu1pd3vHxg3ZNl7D7r-581" connectable="0" parent="GYxu1pd3vHxg3ZNl7D7r-580" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=#82B366;" value="&lt;font style=&quot;color: rgb(130, 179, 102);&quot;&gt;User Join&lt;/font&gt;" vertex="1">
-          <mxGeometry relative="1" x="0.1891" as="geometry">
-            <mxPoint x="-9" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="GYxu1pd3vHxg3ZNl7D7r-507" edge="1" parent="1" source="GYxu1pd3vHxg3ZNl7D7r-247" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="GYxu1pd3vHxg3ZNl7D7r-494">
-          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
