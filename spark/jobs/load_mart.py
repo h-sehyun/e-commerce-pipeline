@@ -1,6 +1,6 @@
 """
 Mart Load Job
-- S3 mart/otto/{mart_name}/ parquet 읽기
+- S3 otto/mart/{mart_name}/ parquet 읽기
 - PostgreSQL mart_* 테이블 적재 (overwrite)
 - 나중에 일배치로 바꿀 때: mode="append" + 날짜 파라미터
 """
@@ -27,7 +27,7 @@ MART_TABLES = {
     "item_stats":   "mart_item_stats",
 }
 
-MART_BASE = f"s3a://{config.S3_BUCKET}/mart/otto/"
+MART_BASE = f"s3a://{config.S3_BUCKET}/otto/mart/"
 
 
 def create_spark_session() -> SparkSession:

@@ -1,10 +1,10 @@
 """
 Transform Job
-- S3 raw/otto/{event_type}/ 읽기
+- S3 otto/raw/{event_type}/ 읽기
 - 타입 변환 (ts: ms → timestamp)
 - Null 처리
 - 중복 제거
-- S3 stg/otto/ parquet 저장
+- S3 otto/stg/ parquet 저장
 """
 
 import sys
@@ -35,8 +35,8 @@ RAW_SCHEMA = StructType([
 ])
 
 # S3 경로 
-RAW_PATH = f"s3a://{config.S3_BUCKET}/raw/otto/"
-STG_PATH = f"s3a://{config.S3_BUCKET}/stg/otto/"
+RAW_PATH = f"s3a://{config.S3_BUCKET}/otto/raw/"
+STG_PATH = f"s3a://{config.S3_BUCKET}/otto/stg/"
 
 
 def create_spark_session() -> SparkSession:

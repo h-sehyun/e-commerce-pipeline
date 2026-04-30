@@ -1,6 +1,6 @@
 """
 DQ Check Job
-- S3 stg/ 의 데이터 품질 점검(stg/otto/{date}/*.parquet)
+- S3 stg/ 의 데이터 품질 점검(otto/stg/{date}/*.parquet)
 - Null 체크 / 중복 체크 / 타입 체크 / 범위 체크 등
 - PASS -> 다음 단계 / FAIL -> Airflow 중단
 """
@@ -15,7 +15,7 @@ from pyspark.sql import functions as F
 
 import config
 
-STG_PATH = f"s3a://{config.S3_BUCKET}/stg/otto/"
+STG_PATH = f"s3a://{config.S3_BUCKET}/otto/stg/"
 
 def create_spark_session() -> SparkSession:
     """SparkSession 생성 (S3 접근 설정 포함)"""

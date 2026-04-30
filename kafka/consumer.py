@@ -35,7 +35,7 @@ s3 = boto3.client("s3", region_name=config.AWS_REGION)
 # ── S3 경로 생성 ───────────────────────────────────────
 def s3_key(event_type: str) -> str:
     """
-    raw/otto/clicks/2024/01/15/09/abc123.jsonl
+    otto/raw/clicks/2024/01/15/09/abc123.jsonl
     Airflow DAG의 raw read 경로와 1:1 대응
     """
     now = datetime.now(timezone.utc)
@@ -59,10 +59,10 @@ def flush_to_s3(event_type: str, buffer: list[dict]) -> bool:
             Body=body.encode("utf-8"),
             ContentType="application/x-ndjson",
         )
-        print(f"  📦 S3 업로드: s3://{config.S3_BUCKET}/{key}  ({len(buffer)}건)")
+        print(f"  S3 업로드: s3://{config.S3_BUCKET}/{key}  ({len(buffer)}건)")
         return True
     except Exception as e:
-        print(f"  ❌ S3 업로드 실패 [{event_type}]: {e}")
+        print(f"  S3 업로드 실패 [{event_type}]: {e}")
         return False
 
 
@@ -94,14 +94,14 @@ class OttoS3Consumer:
                     session_timeout_ms=30000,
                     heartbeat_interval_ms=10000,
                 )
-                print(f"✅ Kafka Consumer 연결: {config.KAFKA_BOOTSTRAP_SERVERS}")
-                print(f"   구독 토픽: {topics}")
+                print(f" Kafka Consumer 연결: {config.KAFKA_BOOTSTRAP_SERVERS}")
+                print(f" 구독 토픽: {topics}")
                 return consumer
             except KafkaError as e:
                 wait = attempt * 3
-                print(f"⚠️  Consumer 연결 실패 ({attempt}/5) — {wait}초 후 재시도: {e}")
+                print(f"  Consumer 연결 실패 ({attempt}/5) — {wait}초 후 재시도: {e}")
                 time.sleep(wait)
-        raise RuntimeError("❌ Kafka Consumer 연결 실패")
+        raise RuntimeError(" Kafka Consumer 연결 실패")
 
     def _should_flush(self, event_type: str) -> bool:
         size_ok = len(self.buffers[event_type]) >= config.FLUSH_BATCH_SIZE
@@ -164,7 +164,7 @@ class OttoS3Consumer:
                     )
 
         except KeyboardInterrupt:
-            print("\n⏹  종료 신호 수신")
+            print("\n  종료 신호 수신")
         finally:
             self._stop.set()
             # 남은 버퍼 모두 flush

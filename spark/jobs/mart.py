@@ -1,12 +1,12 @@
 """
 Mart Job
-- S3 stg/otto/ 전체 읽기
+- S3 otto/stg/ 전체 읽기
 - 비즈니스 지표 집계
     - mart_funnel_daily | 일별 퍼널 전환율  | Daily
     - mart_session      | 세션 분석        | Daily
     - mart_cohort       | 코호트 리텐션     | Monthly
     - mart_item_stats   | 상품별 인기도     | Daily
-- S3 mart/otto/{mart_name}/ parquet 저장
+- S3 otto/mart/{mart_name}/ parquet 저장
 """
 
 import sys
@@ -18,8 +18,8 @@ from pyspark.sql import functions as F
 
 import config
 
-STG_PATH  = f"s3a://{config.S3_BUCKET}/stg/otto/"
-MART_BASE = f"s3a://{config.S3_BUCKET}/mart/otto/"
+STG_PATH  = f"s3a://{config.S3_BUCKET}/otto/stg/"
+MART_BASE = f"s3a://{config.S3_BUCKET}/otto/mart/"
 
 
 def create_spark_session() -> SparkSession:

@@ -20,9 +20,9 @@ AWS_ACCESS_KEY_ID     = os.getenv("AWS_ACCESS_KEY_ID", "")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY", "")
 
 # S3 경로 규칙
-# raw/otto/{event_type}/YYYY/MM/DD/HH/{uuid}.jsonl
+# otto/raw/{event_type}/YYYY/MM/DD/HH/{uuid}.jsonl
 # airflow DAG의 raw read 경로와 1:1 대응
-S3_PREFIX = "raw/otto"
+S3_PREFIX = "otto/raw"
 
 # Kafka
 KAFKA_BOOTSTRAP_SERVERS = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092")

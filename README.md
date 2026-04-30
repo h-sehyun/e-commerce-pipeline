@@ -43,23 +43,26 @@ e-commerce-pipeline/
 ## S3 경로
 
 ```
-raw/otto/{event_type}/YYYY/MM/DD/HH/   ← Kafka Consumer 적재
-stg/otto/                               ← Spark 정제본 (parquet)
-mart/otto/{mart_name}/                  ← 집계 결과 (parquet)
+otto/raw/{event_type}/YYYY/MM/DD/HH/    ← Kafka Consumer 적재
+otto/stg/                               ← Spark 정제본 (parquet)
+otto/mart/{mart_name}/                  ← 집계 결과 (parquet)
 ```
 ### 설계 고려사항
 
 **이벤트 타입별 폴더 분리 (`click/cart/order`)**
-Spark에서 필요한 이벤트 타입만 골라 읽을 수 있어 불필요한 데이터 스캔을 줄입니다.
+- Spark에서 필요한 이벤트 타입만 골라 읽을 수 있어 불필요한 데이터 스캔 감수.
 
 **시간 파티션 (`YYYY/MM/DD/HH/`)**
-날짜 기준 증분 처리를 위해 시간 단위로 파티셔닝했습니다. 3단계 Airflow 일배치 전환 시 `YYYY/MM/DD/`로 변경 예정입니다.
+- 날짜 기준 증분 처리를 위해 시간 단위로 파티셔닝
+- 3단계 Airflow 일배치 전환 시 `YYYY/MM/DD/`로 변경 예정
 
 **UTC 기준 시간**
-Spark, Airflow 모두 UTC를 기본으로 동작하므로 시간대를 UTC로 통일했습니다. 대시보드 표시 시 KST로 변환합니다.
+- Spark, Airflow 모두 UTC를 기본으로 동작하므로 시간대를 UTC로 통일
+- 대시보드 표시 시 KST로 변환
 
 **jsonl 포맷**
-한 줄이 하나의 이벤트로 구성되어 스트리밍으로 읽고 쓰기 용이합니다. Spark에서 스키마 추론 없이 읽을 수 있습니다.
+- 한 줄이 하나의 이벤트로 구성되어 스트리밍으로 읽고 쓰기 용이
+- Spark에서 스키마 추론 없이 읽을 수 있음
 
 
 ## PostgreSQL 테이블

@@ -1,6 +1,6 @@
 """
 Raw Load Job
-- S3 stg/otto/ parquet 읽기
+- S3 otto/stg/ parquet 읽기
 - PostgreSQL stg_events 테이블 적재 (overwrite)
 - 나중에 일배치로 바꿀 때: mode="append" + 날짜 파라미터
 """
@@ -20,7 +20,7 @@ POSTGRES_PROPS = {
     "driver":   "org.postgresql.Driver",
 }
 
-STG_PATH  = f"s3a://{config.S3_BUCKET}/stg/otto/"
+STG_PATH  = f"s3a://{config.S3_BUCKET}/otto/stg/"
 STG_TABLE = "stg_events"
 
 

@@ -36,11 +36,11 @@ TRAIN_PATH = Path("data/raw/otto-recsys-train.jsonl")
 def load_users() -> list[dict]:
     if not USERS_PATH.exists():
         raise FileNotFoundError(
-            f"❌ {USERS_PATH} 없음 — 먼저 실행: python generate_users.py"
+            f" {USERS_PATH} 없음 — 먼저 실행: python generate_users.py"
         )
     with open(USERS_PATH, encoding="utf-8") as f:
         users = json.load(f)
-    print(f"✅ 유저 로드: {len(users):,}명")
+    print(f" 유저 로드: {len(users):,}명")
     return users
 
 
@@ -109,20 +109,20 @@ def create_producer(retries: int = 5) -> KafkaProducer:
                 batch_size=32768,
                 compression_type="gzip",
             )
-            print(f"✅ Kafka 연결: {config.KAFKA_BOOTSTRAP_SERVERS}")
+            print(f" Kafka 연결: {config.KAFKA_BOOTSTRAP_SERVERS}")
             return producer
         except NoBrokersAvailable:
             wait = attempt * 3
-            print(f"⚠️  연결 실패 ({attempt}/{retries}) — {wait}초 후 재시도...")
+            print(f"  연결 실패 ({attempt}/{retries}) — {wait}초 후 재시도...")
             time.sleep(wait)
-    raise RuntimeError("❌ Kafka 연결 실패")
+    raise RuntimeError(" Kafka 연결 실패")
 
 
 # ── 메인 ──────────────────────────────────────────────
 def main():
     if not TRAIN_PATH.exists():
         raise FileNotFoundError(
-            f"❌ {TRAIN_PATH} 없음 — 먼저 실행: python download_data.py"
+            f" {TRAIN_PATH} 없음 — 먼저 실행: python download_data.py"
         )
 
     user_pool   = load_users()
@@ -142,7 +142,7 @@ def main():
     print("=" * 65)
 
     def on_error(exc):
-        print(f"  ❌ 전송 실패: {exc}")
+        print(f"   전송 실패: {exc}")
 
     with open(TRAIN_PATH, encoding="utf-8") as f:
         for line in f:
@@ -163,7 +163,7 @@ def main():
                     counts[etype] += 1
                     total += 1
                 except KafkaError as e:
-                    print(f"❌ KafkaError: {e}")
+                    print(f" KafkaError: {e}")
 
                 if total % 1000 == 0:
                     elapsed = time.time() - start
