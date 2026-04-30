@@ -5,6 +5,7 @@ USER root
 RUN pip3 install --no-cache-dir \
     pyspark==3.5.4 \
     psycopg2-binary \
+    python-dotenv
 
 # PostgreSQL JDBC 드라이버 (Spark → PostgreSQL 연결)
 RUN curl -fsSL -o /opt/spark/jars/postgresql-42.7.1.jar \
