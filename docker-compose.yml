@@ -1,8 +1,3 @@
-# =============================================================
-# Changelog
-#   2026-04-27  홍세현  Kafka 설정 (zookeeper, kafka, kafka-ui)
-#   2026-04-29  홍세현  Spark, PostgreSQL 추가
-# =============================================================
 
 version: '3.8'
 
@@ -112,10 +107,80 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
       - ./spark/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "otto"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
 
+
+  # ── Airflow ─────────────────────────────────────────────────
+  airflow-webserver:
+    build:
+      context: ./airflow
+      dockerfile: Dockerfile
+    container_name: airflow-webserver
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8082:8080"
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://otto:otto1234@postgres/airflow_db
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION=False
+      - AIRFLOW__WEBSERVER__SECRET_KEY=otto_pipeline_secret_key
+      - _AIRFLOW_DB_UPGRADE=true
+      - _AIRFLOW_WWW_USER_CREATE=true
+      - _AIRFLOW_WWW_USER_USERNAME=admin
+      - _AIRFLOW_WWW_USER_PASSWORD=admin
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
+      - ./spark/jobs:/opt/spark/jobs
+      - ./config.py:/opt/config.py
+      - ./.env:/opt/.env
+      - ./spark/jars:/opt/spark/jars
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: webserver
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+ 
+  airflow-scheduler:
+    build:
+      context: ./airflow
+      dockerfile: Dockerfile
+    container_name: airflow-scheduler
+    restart: unless-stopped
+    depends_on:
+      - airflow-webserver
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://otto:otto1234@postgres/airflow_db
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION=False
+      - AIRFLOW__WEBSERVER__SECRET_KEY=otto_pipeline_secret_key
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
+      - ./spark/jobs:/opt/spark/jobs
+      - ./config.py:/opt/config.py
+      - ./.env:/opt/.env
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./spark/jars:/opt/spark/jars
+    command: scheduler
 
 volumes:
   zookeeper-data:
   zookeeper-log:
   kafka-data:
   postgres-data:
+ 
