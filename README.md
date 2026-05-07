@@ -25,7 +25,7 @@ e-commerce-pipeline/
 │
 ├── spark/
 │   ├── Dockerfile
-│   ├── jars/                 # Spark 연동용 jar 파일
+│   ├── jars/                 # Spark 연동용 jar 파일(gitignore)
 │   │   ├── hadoop-aws-3.3.4.jar
 │   │   ├── aws-java-sdk-bundle-1.12.262.jar
 │   │   └── postgresql-42.7.1.jar
@@ -66,6 +66,12 @@ nano .env
 ```bash
 # Spark 이미지 빌드 (최초 1회)
 docker compose build spark-master spark-worker-1
+
+# Spark jar 파일 복사 (최초 1회)
+mkdir -p spark/jars
+docker cp spark-master:/opt/spark/jars/hadoop-aws-3.3.4.jar spark/jars/
+docker cp spark-master:/opt/spark/jars/aws-java-sdk-bundle-1.12.262.jar spark/jars/
+docker cp spark-master:/opt/spark/jars/postgresql-42.7.1.jar spark/jars/
 
 # Airflow 이미지 빌드 (최초 1회)
 docker compose build airflow-webserver airflow-scheduler
@@ -182,7 +188,6 @@ otto/mart/{mart_name}/                  ← 집계 결과 (parquet)
   - [x] Airflow Docker 배포 (Airflow 2.8.1 + LocalExecutor)
   - [x] otto_pipeline_dag 구현 (SparkSubmitOperator)
   - [ ] 일배치 DAG 증분 처리 (날짜 파라미터 추가)
-  - [ ] Slack 알림 연동
 
 - [ ] 4단계: 시각화
   - [ ] Redash / Superset 대시보드 연동
