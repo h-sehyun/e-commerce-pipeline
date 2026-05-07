@@ -64,16 +64,13 @@ nano .env
 
 ### 2. 인프라 실행
 ```bash
-# Spark 이미지 빌드 (최초 1회)
+# Airflow 디렉토리 생성
+mkdir -p airflow/{dags,logs,plugins}
+
+# Spark 빌드 (최초 1회)
 docker compose build spark-master spark-worker-1
 
-# Spark jar 파일 복사 (최초 1회)
-mkdir -p spark/jars
-docker cp spark-master:/opt/spark/jars/hadoop-aws-3.3.4.jar spark/jars/
-docker cp spark-master:/opt/spark/jars/aws-java-sdk-bundle-1.12.262.jar spark/jars/
-docker cp spark-master:/opt/spark/jars/postgresql-42.7.1.jar spark/jars/
-
-# Airflow 이미지 빌드 (최초 1회)
+# Airflow 빌드 (최초 1회)
 docker compose build airflow-webserver airflow-scheduler
 
 # 전체 실행
@@ -92,7 +89,7 @@ make consumer    # 터미널 1
 make producer    # 터미널 2
 ```
 
-### 5. Spark 배치 처리 (수동 실행)
+### 5. Spark 배치 처리 (수동 실행 시)
 ```bash
 docker exec airflow-scheduler /opt/spark/bin/spark-submit \
     --master spark://spark-master:7077 \
