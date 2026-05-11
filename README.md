@@ -41,6 +41,10 @@ e-commerce-pipeline/
 │   └── dags/
 │       └── otto_pipeline_dag.py  # Spark ETL 배치 DAG
 │
+├── superset/
+│   ├── Dockerfile            
+│   └── docker-compose.yml    # EC2 용량 문제로 Superset은 Local 환경에서 운영
+│
 └── data/                     # gitignore
     ├── raw/otto-recsys-train.jsonl
     └── users.json
@@ -115,6 +119,7 @@ Admin → Connections → + 추가
 
 ### 7. Superset 대시보드
 - 현재 ETL 파이프라인 기본 구조만 짜여있어 데이터가 온전하지 않아 다시 쌓는 중이며, 데이터 적재 완료 후 Superset 대시보드 시각화도 재작업 예정
+- AWS EC2 용량 문제로 Superset의 경우 Local에서 별도 운영 
 ![superset_dashborad](superset_dashborad.png)
 
 
