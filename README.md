@@ -113,6 +113,10 @@ Admin → Connections → + 추가
   Port            : 7077
 ```
 
+### 7. Superset 대시보드
+- 현재 ETL 파이프라인 기본 구조만 짜여있어 데이터가 온전하지 않아 다시 쌓는 중이며, 데이터 적재 완료 후 Superset 대시보드 시각화도 재작업 예정
+![superset_dashborad](superset_dashborad.png)
+
 
 ## S3 경로
 
@@ -186,8 +190,8 @@ otto/mart/{mart_name}/                  ← 집계 결과 (parquet)
   - [x] otto_pipeline_dag 구현 (SparkSubmitOperator)
   - [ ] 일배치 DAG 증분 처리 (날짜 파라미터 추가)
 
-- [ ] 4단계: 시각화
-  - [ ] Redash / Superset 대시보드 연동
+- [△] 4단계: 시각화
+  - [△] Superset 대시보드 연동
 
 - [ ] 5단계: 부가 설정
   - [ ] DataHub(데이터 카탈로그) 구성

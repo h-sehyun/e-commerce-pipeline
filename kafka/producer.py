@@ -86,11 +86,11 @@ def build_event(session_id: int, raw_event: dict, user: dict) -> tuple[str, dict
         "event_type":      TYPE_NORMALIZE[etype],
         # Faker 유저 정보
         "user_id":         user["user_id"],
-        "gender":          user["gender"],
-        "age_group":       user["age_group"],
-        "region":          user["region"],
-        "membership":      user["membership"],
-        "platform":        user["preferred_device"],
+        # "gender":          user["gender"],
+        # "age_group":       user["age_group"],
+        # "region":          user["region"],
+        # "membership":      user["membership"],
+        # "platform":        user["preferred_device"],
     }
     return topic, event
 
